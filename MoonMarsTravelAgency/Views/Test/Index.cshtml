@@ -1,8 +1,4 @@
 ﻿
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -11,13 +7,21 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
+    <div>
         LOL LMAO
         @ViewBag.time
         <br />
-        
 
+        <table>
+            @{
+                foreach (var moon in ViewBag.moons)
+                {
+                    <tr>@moon</tr>
+                }
+            }
+        </table>
         <button onclick="@Html.ActionLink("","Redirect","Test")"></button>
+
     </div>
 </body>
 </html>
