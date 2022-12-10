@@ -48,7 +48,8 @@ namespace MoonMarsTravelAgency.Models
             SqlCommand command;
             SqlConnection sql = new SqlConnection(
                     "Data Source=(LocalDB)\\MSSQLLocalDB;" +
-                    "AttachDbFilename=C:\\Users\\leon\\source\\repos\\MoonMarsTravelAgency\\MoonMarsTravelAgency\\App_Data\\Database.mdf;" +
+                    //"AttachDbFilename=C:\\Users\\leon\\source\\repos\\MoonMarsTravelAgency\\MoonMarsTravelAgency\\App_Data\\Database.mdf;" +
+                    "AttachDbFilename=|DataDirectory|\\Database.mdf;" + 
                     "Integrated Security=True"
                 );
             try
