@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mars</title>
+</head>
+<body>
+    <div>
+        LOL LMAO
+        @ViewBag.time
+        <br />
+
+        <table>
+            <th scope="col">Mars Crater</th>
+            
+                @foreach (var moon in ViewBag.mars)
+                {
+                    <tr>
+                        <td>  @moon.Crater  </td>
+                    </tr>
+                }
+        
+        </table>
+        <button onclick="@Html.ActionLink("l","Redirect","Test")"></button>
+
+    </div>
+</body>
+</html>

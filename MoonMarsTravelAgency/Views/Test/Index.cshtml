@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Moon</title>
 </head>
 <body>
     <div>
@@ -13,12 +13,12 @@
         <br />
 
         <table>
-            <th scope="col">Crater</th>
+            <th scope="col">Moon Crater</th>
             
-                @foreach (var moon in (List<string>)ViewBag.moons)
+                @foreach (var moon in ViewBag.moons)
                 {
                     <tr>
-                        <td>  @moon  </td>
+                        <td>  @moon.Crater  </td>
                     </tr>
                 }
         
