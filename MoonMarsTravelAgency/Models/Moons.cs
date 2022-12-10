@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -32,10 +34,45 @@ namespace MoonMarsTravelAgency.Models
         //    return crater;
         //}
 
-        public void validateMoons()
+//        public void validateMoons()
+//        {
+//            services.AddDbContext<CatalogContext>(options => options.UseSqlServer
+//(Configuration.GetConnectionString("DefaultConnection")));
+//        }
+
+        public List<string> getMoons()
         {
-            services.AddDbContext<CatalogContext>(options => options.UseSqlServer
-(Configuration.GetConnectionString("DefaultConnection")));
+            var moons = new List<string>();
+            string query = "select * from moon";
+            SqlDataReader reader;
+            SqlCommand command;
+            SqlConnection sql = new SqlConnection(
+                    "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                    "AttachDbFilename=C:\\Users\\leon\\source\\repos\\MoonMarsTravelAgency\\MoonMarsTravelAgency\\App_Data\\Database.mdf;" +
+                    "Integrated Security=True"
+                );
+            try
+            {
+
+                //Open database connection
+                sql.Open();
+
+                command = new SqlCommand(query, sql);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    moons.Add(reader.GetString(0));
+
+                //Close connection
+                sql.Close();
+
+            }
+            catch (Exception e) {
+                Debug.WriteLine(e.Message);
+                moons.Add("No moons found!");
+            }
+
+            return moons;
         }
     }
 }

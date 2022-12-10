@@ -13,14 +13,17 @@
         <br />
 
         <table>
-            @{
-                foreach (var moon in ViewBag.moons)
+            <th scope="col">Crater</th>
+            
+                @foreach (var moon in (List<string>)ViewBag.moons)
                 {
-                    <tr>@moon</tr>
+                    <tr>
+                        <td>  @moon  </td>
+                    </tr>
                 }
-            }
+        
         </table>
-        <button onclick="@Html.ActionLink("","Redirect","Test")"></button>
+        <button onclick="@Html.ActionLink("l","Redirect","Test")"></button>
 
     </div>
 </body>

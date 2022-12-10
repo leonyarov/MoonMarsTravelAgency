@@ -12,7 +12,7 @@ namespace MoonMarsTravelAgency.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            
+            ViewBag.moons = new Moons().getMoons();
             ViewBag.time = DateTime.Now;
             return View();
         }
