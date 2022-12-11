@@ -13,8 +13,11 @@ namespace MoonMarsTravelAgency.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            //ViewBag.moons = new Moons().getMoons();
-            ViewBag.moons = new MoonContext().Moon;
+            var moons = new MoonContext().Moon;
+            var filterMoons = from m in moons 
+                              orderby m.Crater descending
+                              select m;
+            ViewBag.moons = filterMoons;
             ViewBag.time = DateTime.Now;
             return View();
         }
@@ -26,10 +29,10 @@ namespace MoonMarsTravelAgency.Controllers
             return View();
         }
 
-        public ActionResult Redirect()
+        public ActionResult Register()
         {
-            TempData["name"] = "Leon";
-            return RedirectToAction("../Home/Index");
+            
+            return View();
          
         }
     }
