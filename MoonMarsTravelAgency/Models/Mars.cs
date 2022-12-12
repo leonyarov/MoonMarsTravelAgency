@@ -1,3 +1,4 @@
+
 namespace MoonMarsTravelAgency.Models
 {
     using System;

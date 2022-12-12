@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
+
 namespace MoonMarsTravelAgency.Models
 {
     public partial class UserContext : DbContext
     {
         public UserContext()
-            : base("name=UserContext")
+            : base("name=Database")
         {
         }
 

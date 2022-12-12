@@ -1,4 +1,7 @@
-﻿@model MoonMarsTravelAgency.Models.Users
+﻿@using System.Data.Entity
+
+
+@model MoonMarsTravelAgency.Models.Users
 
 @{
     Layout = null;
@@ -15,15 +18,25 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     
+
     
-    @using (Html.BeginForm()) 
-    {
+@using (Html.BeginForm("CreateUser","Test", FormMethod.Post))
+{
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal">
             <h4>Users</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+            <div class="form-group">
+	            @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })
+	            <div class="col-md-10">
+		            @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
+		            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+	            </div>
+            </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
