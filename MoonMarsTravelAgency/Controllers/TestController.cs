@@ -61,10 +61,10 @@ namespace MoonMarsTravelAgency.Controllers
             return RedirectToAction("Index");
 
         }
-    
 
 
 
+        
     public ActionResult Register(Users u)
         {
 
