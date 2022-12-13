@@ -19,6 +19,7 @@ namespace MoonMarsTravelAgency.Models
         public string Name { get; set; }
 
         [StringLength(50)]
+        [Column("Last Name")]
         public string Last_Name { get; set; }
 
         [StringLength(50)]

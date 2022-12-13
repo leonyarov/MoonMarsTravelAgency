@@ -34,24 +34,22 @@ namespace MoonMarsTravelAgency.Controllers
             return View();
         }
 
+
+        [ValidateAntiForgeryToken]
         public ActionResult CreateUser(Users u)
         {
             using (var db = new UserContext())
             {
 
-                //var user1 = new Users
-                //{
-                //    ID = u.ID,
-                //    Name = u.Name,
-                //    Last_Name = u.Last_Name,
-                //    Username = u.Username,
-                //    Password = u.Password
-                //};
-
                 if (ModelState.IsValid)
                 {
+                    if (db.Users.Find(u.ID) != null)
+                    {
+                        ViewBag.error = "User Exist!";
+                        return View("Error");
+                    }
+                    
                     db.Users.Add(u);
-
                     db.SaveChanges();
                     return View("Register");
 
