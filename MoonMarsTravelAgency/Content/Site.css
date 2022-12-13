@@ -3,18 +3,17 @@
     padding-bottom: 20px;
     background-image: url('Images/1747390.jpg');
     background-repeat:no-repeat;
-    min-height: 100hv;
+
     /*filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));*/
 }
 html {
-    min-height: 100hv;
+
 }
 
 
 
-*{
-  
-
+* {
+    color: whitesmoke;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -36,12 +35,19 @@ html {
     white-space: normal;
 
 }
+.moon{
+    color: gray;
+}
+.mars{
+    color: rgb(247, 132, 38);
+}
 
 .navbar {
     /*background-color: rgb(255, 255, 255, 0.33);*/
     backdrop-filter: blur(30px);
     background-color: rgb(255, 255, 255, 0.02);
     filter: drop-shadow(0px 10px 10px rgb(255, 255, 255));
+
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -56,7 +62,7 @@ textarea {
     font-style: italic;
     text-transform: uppercase;
     filter: drop-shadow(0px 2px 1px rgb(0, 0, 0));
-    color: whitesmoke;
+ 
 }
 
 .s_welcome {
@@ -65,8 +71,8 @@ textarea {
     text-transform: uppercase;
     text-align: center;
     position: absolute;
-    left: 60%;
-    top: 120px;
+    left: 420px;
+    top: 30px;
     color: gray;
     filter: drop-shadow(0px 2px 1px rgb(0, 0, 0));
 }
