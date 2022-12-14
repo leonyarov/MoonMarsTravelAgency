@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
     background-image: url('Images/1747390.jpg');
     background-repeat:no-repeat;
@@ -18,6 +18,7 @@ html {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    
     padding-left: 15px;
     padding-right: 15px;
     z-index: 3;
@@ -45,8 +46,8 @@ html {
 .navbar {
     /*background-color: rgb(255, 255, 255, 0.33);*/
     backdrop-filter: blur(30px);
-    background-color: rgb(255, 255, 255, 0.02);
-    filter: drop-shadow(0px 10px 10px rgb(255, 255, 255));
+    background-color: rgb(255, 255, 255, 0.64);
+    filter: drop-shadow(0px 3px 10px rgb(255, 255, 255));
 
 }
 
@@ -87,3 +88,5 @@ textarea {
 #items{
     color: white;
 }
+
+

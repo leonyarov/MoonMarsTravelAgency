@@ -1,0 +1,53 @@
+@{ 
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/Styles/signin.css")
+
+</head>
+<body class="text-center">
+
+    <main class="form-signin w-100 m-auto">
+        <form>
+            <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal fw-bold"> Sign In</h1>
+
+            <div class="form-floating">
+                <input type="number" class="form-control" id="loginID" placeholder="ID">
+                <label for="floatingInput">ID</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            @*<div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>*@
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            @Html.ActionLink("Back to main page", "Index", "Home", null, new { @class= "btn btn-secondary" })
+
+        <p class="mt-5 mb-3 text-muted btn-close-white">&copy; @DateTime.Now.Year Leon &amp; Dori</p>
+
+</form>
+    </main>
+
+
+
+</body>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+</html>
