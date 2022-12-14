@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
@@ -35,8 +36,40 @@ namespace MoonMarsTravelAgency.Controllers
         }
 
 
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(Users u)
+        //public ActionResult CreateUser(Users u)
+        //{
+        //    using (var db = new UserContext())
+        //    {
+
+        //        if (ModelState.IsValid)
+        //        {
+        //            if (db.Users.Find(u.ID) != null)
+        //            {
+        //                ViewBag.error = "User Exist!";
+        //                return View("Error");
+        //            }
+        //            else
+        //            {
+        //                db.Users.Add(u);
+        //                db.SaveChanges();
+        //                return View("Register");
+        //            }
+        //        }
+
+        //        //TODO: Error message;
+
+        //    }
+
+        //    return RedirectToAction("Index", "Home");
+
+        //}
+
+
+
+
+       // [ValidateAntiForgeryToken]
+        public ActionResult Register(Users u)
+     
         {
             using (var db = new UserContext())
             {
@@ -46,29 +79,29 @@ namespace MoonMarsTravelAgency.Controllers
                     if (db.Users.Find(u.ID) != null)
                     {
                         ViewBag.error = "User Exist!";
-                        return View("Error");
+                        return RedirectToAction("ErrorResult","Test");
                     }
-                    
-                    db.Users.Add(u);
-                    db.SaveChanges();
-                    return View("Register");
-
+                    else
+                    {
+                        db.Users.Add(u);
+                        db.SaveChanges();
+                        return RedirectToAction("Index","Home");
+                    }
                 }
 
                 //TODO: Error message;
 
             }
-            return RedirectToAction("Index");
+
+            return View(u);
 
         }
 
-
-
-        
-    public ActionResult Register(Users u)
+        public ActionResult ErrorResult()
         {
 
-            return View(new Users());
+            //TODO: message the user about the error 
+            return RedirectToAction("Register", "Test");
         }
     }
 }
