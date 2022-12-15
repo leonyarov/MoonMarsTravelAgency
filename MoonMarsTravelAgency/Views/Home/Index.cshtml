@@ -2,31 +2,60 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1 class="welcome"><span class="moon">Moon</span>-<span class="mars">Mars</span> Travel Agency</h1>
-    <p class="s_welcome">Leon&amp;Dori Musk</p>
-    <p class="blockquote-footer">Order flights now!</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div>
+    <div class="jumbotron">
+        <h1 class="welcome"><span class="moon">Moon</span>-<span class="mars">Mars</span> Travel Agency</h1>
+        <p class="s_welcome">Leon&amp;Dori Musk</p>
+        <p class="blockquote-footer">Order flights now!</p>
+
+    </div>
+
+    @using (Html.BeginForm("Search", "Flight", FormMethod.Post))
+    {
+        <div class="row " id="items">
+
+            <div class="col">
+                <label for="moon">Origin</label>
+                <select name="moon" id="moon" class="form-control me-2">
+                    @foreach (var moon in ViewBag.moon)
+                    {
+                        <option value="@moon.Crater">@moon.Crater</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col">
+
+                <label for="mars">Destination</label>
+                <select name="mars" id="mars" class="form-control me-2">
+                    @foreach (var mars in ViewBag.mars)
+                    {
+                        <option value="@mars.Crater">@mars.Crater</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col">
+
+                @Html.Label("Departure")
+                @Html.TextBox("Departure", "", htmlAttributes: new { @class = "form-control me-2", type = "date" })
+            </div>
+
+            <div class="col">
+                @Html.Label("Return")
+                @Html.TextBox("Return", "", htmlAttributes: new { @class = "form-control me-2", type = "date" })
+            </div>
+            <div class="col">
+                @Html.Label("Passengers")
+                @Html.TextBox("1", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
+            </div>
+            <div class="col  mt-4">
+                <button type="submit" class="btn btn-success">Search &raquo;</button>
+            </div>
+
+        </div>
+    }
+
 </div>
 
-<div class="row" id="items">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+

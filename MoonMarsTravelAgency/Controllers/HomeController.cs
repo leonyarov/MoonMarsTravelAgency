@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoonMarsTravelAgency.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,12 @@ namespace MoonMarsTravelAgency.Controllers
     public class HomeController : Controller
     {
 
+        MoonMarsContext db = new MoonMarsContext();
         public ActionResult Index()
         {
-            
+            ViewBag.moon = db.Moon;
+            ViewBag.mars = db.Mars;
+
             return View();
         }
    

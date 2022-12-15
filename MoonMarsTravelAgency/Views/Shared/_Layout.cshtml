@@ -6,69 +6,42 @@
     <title>@ViewBag.Title - Moon Mars Travel Agency</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <!--<link href="@Url.Content("~")" rel="stylesheet" />-->
 </head>
 <body>
-
-    @*<nav class="navbar fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Moon Mars Travel Agency", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Moon", "Index", "Test")</li>
-                    <li>@Html.ActionLink("Mars", "Mars", "Test")</li>
-
-                    <li>@Html.ActionLink("Register", "Register", "Test")</li>
-                </ul>
-            </div>
-        </div>
-    </nav>*@
-
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid ">
             @Html.ActionLink("🚀", "Index", "Home", new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Moon", "Index", "Test", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Mars", "Mars", "Test", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Users", "Index", "Users", null, new { @class = "nav-link" })</li>
-
-                    @if (Session["ID"] != null)
+                    @if (Session["Admin"] != null)
                     {
-                        <li class="nav-item">@Html.ActionLink(Session["Username"].ToString(), "Details", "Users", new { id = Session["ID"].ToString()}, new { @class = "nav-link" })</li>
-
-                        
+                        <li class="nav-item">@Html.ActionLink("Users", "Index", "Users", null, new { @class = "nav-link" })</li>
                     }
-                    else
-                    {
-                        <li class="nav-item">@Html.ActionLink("Login", "Index", "Authentication", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item">@Html.ActionLink("Register", "Register", "Test", null, new { @class = "nav-link" })</li>
-                    }
-
-
-
-
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex me-5" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+
+                @if (Session["ID"] != null)
+                {
+                    <button class="nav-item">@Html.ActionLink(Session["Username"].ToString(), "Details", "Users", new { id = Session["ID"].ToString() }, new { @class = "nav-link" })</button>
+
+
+                }
+                else
+                {
+                    <button class="align-self-end btn btn-success me-2">@Html.ActionLink("Login", "Index", "Authentication", null, new { @class = "nav-link" })</button>
+                    <button class="align-self-end btn btn-danger me-2 ">@Html.ActionLink("Register", "Register", "Test", null, new { @class = "nav-link" })</button>
+
+                }
+
+
+
             </div>
         </div>
     </nav>
