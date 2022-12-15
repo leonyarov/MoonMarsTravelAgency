@@ -19,7 +19,7 @@ namespace MoonMarsTravelAgency.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            var moons = new MoonContext().Moon;
+            var moons = new MoonMarsContext().Moon;
             var filterMoons = from m in moons
                 orderby m.Crater descending
                 select m;
@@ -30,7 +30,7 @@ namespace MoonMarsTravelAgency.Controllers
 
         public ActionResult Mars()
         {
-            ViewBag.mars = new MarsContext().Mars;
+            ViewBag.mars = new MoonMarsContext().Mars;
             ViewBag.time = DateTime.Now;
             return View();
         }
@@ -71,7 +71,7 @@ namespace MoonMarsTravelAgency.Controllers
         public ActionResult Register(Users u)
      
         {
-            using (var db = new UserContext())
+            using (var db = new MoonMarsContext())
             {
 
                 if (ModelState.IsValid)

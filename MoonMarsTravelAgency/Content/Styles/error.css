@@ -1,0 +1,30 @@
+﻿body{
+    background-image: url("../Images/calliso.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background
+    color:white;
+   
+}
+
+body {
+    backdrop-filter: grayscale(30%);
+    backdrop-filter: blur(1px);
+}
+
+.items {
+    background-color: rgb(255, 255, 255, 0.24);
+    color: white;
+    text-shadow: 2px 2px 6px black;
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(2px 2px 6px black);
+}
+h6{
+    color: gold;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .items {
+        margin-top: 10%;
+    }

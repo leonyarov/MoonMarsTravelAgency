@@ -18,6 +18,7 @@ main {
     backdrop-filter: blur(2px);
     background-color: rgb(255, 255, 255, 0.05);
     border-radius: 20px;
+    box-shadow: 0 0 10px 10px blue unset;
 }
 .form-signin {
     max-width: 330px;

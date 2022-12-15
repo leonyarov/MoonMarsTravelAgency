@@ -1,0 +1,35 @@
+﻿@{ 
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error @ViewBag.StatusCode</title>
+    @Styles.Render("~/Content/bootstrap.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Styles/error.css")
+
+</head> 
+<body>
+    <div class=" d-flex  mx-auto  vh-100">
+
+        <div class="">
+
+            <div class="px-3 d-flex  flex-column  card mt-xl-5 m-lg-5 items">
+                <h1>Error @ViewBag.StatusCode</h1>
+                <h2>Callisto has never been closer!</h2>
+                <h3>Yet here we are, at 10 light years away from it!</h3>
+                <h6>The page is not available, go away now</h6>
+
+                <p>
+                    @ViewBag.exception
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

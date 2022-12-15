@@ -17,17 +17,19 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <form>
-            <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        @using (Html.BeginForm("Login", "Authentication",FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @*<img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">*@
             <h1 class="h3 mb-3 fw-normal fw-bold"> Sign In</h1>
 
             <div class="form-floating">
-                <input type="number" class="form-control" id="loginID" placeholder="ID">
-                <label for="floatingInput">ID</label>
+                @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID" ,type="number"})
+                <label for="loginID">ID</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                @Html.Password("loginPassword","",htmlAttributes: new {@class="form-control" ,placeholder="Password"})
+                <label for="loginPassword">Password</label>
             </div>
 
             @*<div class="checkbox mb-3">
@@ -36,12 +38,11 @@
                 </label>
             </div>*@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            @Html.ActionLink("Back to main page", "Index", "Home", null, new { @class= "btn btn-secondary" })
+            @Html.ActionLink("Back to main page", "Index", "Home", null, new { @class = "btn btn-secondary" })
 
-        <p class="mt-5 mb-3 text-muted btn-close-white">&copy; @DateTime.Now.Year Leon &amp; Dori</p>
-
-</form>
-    </main>
+            <p class="mt-5 mb-3 text-muted btn-close-white">&copy; @DateTime.Now.Year Leon &amp; Dori</p>
+        }
+        </main>
 
 
 

@@ -127,7 +127,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Fillters.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -135,13 +137,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admins.cs" />
+    <Compile Include="Models\Flights.cs" />
     <Compile Include="Models\Mars.cs" />
-    <Compile Include="Context\MarsContext.cs" />
     <Compile Include="Models\Moon.cs" />
-    <Compile Include="Context\MoonContext.cs" />
+    <Compile Include="Models\MoonMarsContext.cs" />
     <Compile Include="Models\Payment.cs" />
-    <Compile Include="Context\PaymentContext.cs" />
-    <Compile Include="Context\UserContext.cs" />
+    <Compile Include="Models\Tickets.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,8 +169,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\1747390.jpg" />
+    <Content Include="Content\Images\calliso.jpg" />
     <Content Include="Content\Images\earth.jpg" />
     <Content Include="Content\Main.css" />
+    <Content Include="Content\Styles\error.css" />
     <Content Include="Content\Styles\signin.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -227,7 +231,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\ErrorPage\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -248,7 +252,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Context\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

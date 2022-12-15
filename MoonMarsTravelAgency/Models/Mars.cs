@@ -1,4 +1,3 @@
-
 namespace MoonMarsTravelAgency.Models
 {
     using System;
@@ -7,7 +6,6 @@ namespace MoonMarsTravelAgency.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Mars")]
     public partial class Mars
     {
         [Key]

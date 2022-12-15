@@ -11,17 +11,21 @@ namespace MoonMarsTravelAgency.Controllers
 {
     public class UsersController : Controller
     {
-        private UserContext db = new UserContext();
+        private MoonMarsContext db = new MoonMarsContext();
 
         // GET: Users
+        [AdminFillter]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
         // GET: Users/Details/5
+        [UserFillter]
         public ActionResult Details(int? id)
         {
+            //if (Session["ID"] == null)
+            //    return Redirect(Request.UrlReferrer.ToString());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -35,6 +39,7 @@ namespace MoonMarsTravelAgency.Controllers
         }
 
         // GET: Users/Create
+        [AdminFillter]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +50,7 @@ namespace MoonMarsTravelAgency.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminFillter]
         public ActionResult Create([Bind(Include = "ID,Name,Last_Name,Username,Password")] Users users)
         {
             if (ModelState.IsValid)
@@ -58,6 +64,7 @@ namespace MoonMarsTravelAgency.Controllers
         }
 
         // GET: Users/Edit/5
+        [AdminFillter]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +84,7 @@ namespace MoonMarsTravelAgency.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [UserFillter]
         public ActionResult Edit([Bind(Include = "ID,Name,Last_Name,Username,Password")] Users users)
         {
             if (ModelState.IsValid)
@@ -89,6 +97,7 @@ namespace MoonMarsTravelAgency.Controllers
         }
 
         // GET: Users/Delete/5
+        [AdminFillter]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +115,7 @@ namespace MoonMarsTravelAgency.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AdminFillter]
         public ActionResult DeleteConfirmed(int id)
         {
             Users users = db.Users.Find(id);
