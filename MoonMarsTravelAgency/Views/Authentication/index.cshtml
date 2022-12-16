@@ -1,4 +1,4 @@
-@{ 
+@{
     Layout = null;
     ViewBag.Title = "Login";
 }
@@ -13,36 +13,77 @@
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/Styles/signin.css")
 
+
+
 </head>
 <body class="text-center">
 
-    <main class="form-signin w-100 m-auto">
-        @using (Html.BeginForm("Login", "Authentication",FormMethod.Post))
+    <main class="form-signin w-100 m-auto" id="login">
+        @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             @*<img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">*@
             <h1 class="h3 mb-3 fw-normal fw-bold"> Sign In</h1>
 
             <div class="form-floating">
-                @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID" ,type="number"})
+                @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" })
                 <label for="loginID">ID</label>
             </div>
             <div class="form-floating">
-                @Html.Password("loginPassword","",htmlAttributes: new {@class="form-control" ,placeholder="Password"})
+                @Html.Password("loginPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password" , type="password"})
                 <label for="loginPassword">Password</label>
             </div>
 
-            @*<div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>*@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+            <button class="btn btn-warning text-white" type="button" onclick="register()">Register</button>
+
+            @Html.ActionLink("Back to main page", "Index", "Home", null, new { @class = "btn btn-secondary" })
+
+
+            <p class="mt-5 mb-3 text-muted btn-close-white">&copy; @DateTime.Now.Year Leon &amp; Dori</p>
+        }
+    </main>
+
+    <main class="form-signin w-100 m-auto" id="register">
+        @using (Html.BeginForm("Register", "Authentication", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <h1 class="h3 mb-3 fw-normal fw-bold"> Register </h1>
+
+            <div class="form-floating">
+                @Html.TextBox("registerID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" })
+                <label for="registerID">ID</label>
+            </div>
+
+            <div class="form-floating">
+                @Html.TextBox("registerUsername", "", htmlAttributes: new { @class = "form-control", placeholder = "Username", type = "text" })
+                <label for="regiterUsername">Username</label>
+            </div>
+
+            <div class="form-floating">
+                @Html.TextBox("registerName", "", htmlAttributes: new { @class = "form-control", placeholder = "Name", type = "text" })
+                <label for="registerName">Name</label>
+            </div>
+            <div class="form-floating">
+                @Html.TextBox("registerfName", "", htmlAttributes: new { @class = "form-control", placeholder = "Last Name", type = "text" })
+                <label for="registerfName">Last Name</label>
+            </div>
+
+            <div class="form-floating">
+                @Html.Password("registerPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password", type = "password" })
+                <label for="loginPassword">Password</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+
+            <button class="btn btn-warning text-white" type="button" onclick="login()">Login</button>
+
             @Html.ActionLink("Back to main page", "Index", "Home", null, new { @class = "btn btn-secondary" })
 
             <p class="mt-5 mb-3 text-muted btn-close-white">&copy; @DateTime.Now.Year Leon &amp; Dori</p>
         }
-        </main>
+    </main>
 
 
 
@@ -52,3 +93,19 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 </html>
+
+
+<script>
+    login();
+    function register() {
+        $("#login").hide();
+        $("#register").show();
+    }
+
+    function login() {
+        $("#login").show();
+        $("#register").hide();
+    }
+
+</script>
+
