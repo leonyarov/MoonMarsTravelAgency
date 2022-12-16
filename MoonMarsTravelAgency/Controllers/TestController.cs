@@ -19,12 +19,12 @@ namespace MoonMarsTravelAgency.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            var moons = new MoonMarsContext().Moon;
-            var filterMoons = from m in moons
-                orderby m.Crater descending
-                select m;
-            ViewBag.moons = filterMoons;
-            ViewBag.time = DateTime.Now;
+            //var moons = new MoonMarsContext().Moon;
+            //var filterMoons = from m in moons
+            //    orderby m.Crater descending
+            //    select m;
+            //ViewBag.moons = filterMoons;
+            //ViewBag.time = DateTime.Now;
             return View();
         }
 
@@ -66,10 +66,10 @@ namespace MoonMarsTravelAgency.Controllers
 
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "ID,Name,Last_Name,Username,Password")] Users u)
 
-       // [ValidateAntiForgeryToken]
-        public ActionResult Register(Users u)
-     
         {
             using (var db = new MoonMarsContext())
             {
