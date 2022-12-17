@@ -13,22 +13,30 @@ namespace MoonMarsTravelAgency.Models
         }
 
         public virtual DbSet<Admins> Admins { get; set; }
-        public virtual DbSet<Flights> Flights { get; set; }
+      
         public virtual DbSet<Mars> Mars { get; set; }
         public virtual DbSet<Moon> Moon { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Flights> Flights { get; set; }
+
+        public virtual DbSet<Schedule> Schedule { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Flights>()
-                .Property(e => e.From)
+            modelBuilder.Entity<Schedule>()
+       .Property(e => e.From)
+       .IsUnicode(false);
+
+            modelBuilder.Entity<Schedule>()
+                .Property(e => e.To)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Flights>()
-                .Property(e => e.To)
-                .IsUnicode(false);
+              .Property(e => e.FlightName)
+              .IsUnicode(false);
 
             modelBuilder.Entity<Mars>()
                 .Property(e => e.Crater)

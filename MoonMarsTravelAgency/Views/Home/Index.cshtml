@@ -1,4 +1,7 @@
-﻿@{
+﻿@using System.Data.Entity
+@model IEnumerable<MoonMarsTravelAgency.Models.Schedule>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -10,7 +13,7 @@
 
     </div>
 
-    @using (Html.BeginForm("Search", "Flight", FormMethod.Post))
+    @using (Html.BeginForm("Index", "Schedules", FormMethod.Post))
     {
         <div class="row " id="items">
 

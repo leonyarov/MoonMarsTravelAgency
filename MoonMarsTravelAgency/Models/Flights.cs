@@ -10,19 +10,12 @@ namespace MoonMarsTravelAgency.Models
     {
         [Required]
         [StringLength(50)]
-        public string From { get; set; }
-
-        [StringLength(50)]
-        public string To { get; set; }
+        public string FlightName { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        public double? Price { get; set; }
-
         public int? Seats { get; set; }
-
-        public DateTime? Scheduled { get; set; }
 
         public int? Popularity { get; set; }
     }
