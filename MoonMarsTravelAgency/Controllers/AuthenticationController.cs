@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -21,11 +23,11 @@ namespace MoonMarsTravelAgency.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+
         public ActionResult Login([Bind(Include = "loginID,loginPassword")] FormCollection form)
         {
             var id = Convert.ToInt32(form["loginID"]);
-            var pass = form["loginPassword"];
+            var pass = GetMD5(form["loginPassword"]);
 
             var db = new MoonMarsContext();
             var user = db.Users.Find(id);
@@ -49,7 +51,9 @@ namespace MoonMarsTravelAgency.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "registerID,registerPassword,registerfName, registerName, registerUsername")] FormCollection form)
+        public ActionResult Register(
+            [Bind(Include = "registerID,registerPassword,registerfName, registerName, registerUsername")]
+            FormCollection form)
         {
             var id = Convert.ToInt32(form["registerID"]);
             var pass = form["registerPassword"];
@@ -62,7 +66,7 @@ namespace MoonMarsTravelAgency.Controllers
             var newUser = new Users()
             {
                 ID = id,
-                Password = pass,
+                Password = GetMD5(pass),
                 Last_Name = form["registerfName"],
                 Name = form["registerName"],
                 Username = form["registerUsername"]
@@ -72,5 +76,25 @@ namespace MoonMarsTravelAgency.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+        //create a string MD5
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+
+            return byte2String;
+        }
+
+
+
     }
 }
