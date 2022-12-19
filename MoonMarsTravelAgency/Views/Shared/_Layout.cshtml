@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid ">
-            @Html.ActionLink("🚀", "Index", "Home", new { @class = "navbar-brand" })
+            @Html.ActionLink("🚀", "Index", "Home", null,new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,7 +29,7 @@
 
                 @if (Session["ID"] != null)
                 {
-                    <button class="nav-item">@Html.ActionLink(Session["Username"].ToString(), "Details", "Users", new { id = Session["ID"].ToString() }, new { @class = "nav-link" })</button>
+                    <button class="nav-item bg-black">@Html.ActionLink(Session["Username"].ToString(), "Details", "Users", new { id = Session["ID"].ToString() }, new { @class = "nav-link" })</button>
 
 
                 }

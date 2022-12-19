@@ -22,9 +22,11 @@
         @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            @*<img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">*@
             <h1 class="h3 mb-3 fw-normal fw-bold"> Sign In</h1>
-
+            if (ViewBag?.error)
+                {
+                    <h2 class="alert-warning">Wrong ID or Password</h2>
+                }
             <div class="form-floating">
                 @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" })
                 <label for="loginID">ID</label>

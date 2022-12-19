@@ -20,6 +20,27 @@ namespace MoonMarsTravelAgency.Controllers
             return View(db.Schedule.ToList());
         }
 
+
+        [HttpPost]
+        public ActionResult Search(FormCollection form)
+        {
+            var search = db.Schedule.ToList();
+            var goDate = form["Departure"];
+            var returnDate = form["Return"];
+            var from = form["moon"];
+            var to = form["mars"];
+            var pass = int.Parse(form["Passengers"]);
+
+            var ticketCount = db.Tickets.Sum(x => x.Seat_ID);
+            var result = from x in search
+                         where goDate.Equals(x.ScheduleDate) &&
+                         returnDate.Equals(x.ArrivalDate) &&
+                         pass + ticketCount <= x.Seats
+                         select x;
+                     ;
+            return View("Index",result.ToList());
+        }
+
         // GET: Schedules/Details/5
         public ActionResult Details(int? id)
         {
@@ -113,6 +134,22 @@ namespace MoonMarsTravelAgency.Controllers
             db.Schedule.Remove(schedule);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Book(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Schedule schedule = db.Schedule.Find(id);
+
+            if (schedule == null)
+            {
+                return HttpNotFound();
+            }
+
+            return RedirectToAction("But", "Ticket", schedule);
         }
 
         protected override void Dispose(bool disposing)

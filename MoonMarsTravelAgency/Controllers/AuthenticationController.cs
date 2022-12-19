@@ -16,6 +16,8 @@ namespace MoonMarsTravelAgency.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.error = false;
+
             return View();
         }
 
@@ -26,8 +28,9 @@ namespace MoonMarsTravelAgency.Controllers
 
         public ActionResult Login([Bind(Include = "loginID,loginPassword")] FormCollection form)
         {
+            ViewBag.error = false;
             var id = Convert.ToInt32(form["loginID"]);
-            var pass = GetMD5(form["loginPassword"]);
+            var pass = form["loginPassword"];
 
             var db = new MoonMarsContext();
             var user = db.Users.Find(id);
@@ -44,7 +47,10 @@ namespace MoonMarsTravelAgency.Controllers
 
             }
             else
+            {
+                ViewBag.error = true;
                 return RedirectToAction("index");
+            }
 
             return RedirectToAction("Index", "Home");
         }
@@ -66,7 +72,7 @@ namespace MoonMarsTravelAgency.Controllers
             var newUser = new Users()
             {
                 ID = id,
-                Password = GetMD5(pass),
+                Password = pass,
                 Last_Name = form["registerfName"],
                 Name = form["registerName"],
                 Username = form["registerUsername"]
@@ -77,22 +83,6 @@ namespace MoonMarsTravelAgency.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //create a string MD5
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-
-            }
-
-            return byte2String;
-        }
 
 
 

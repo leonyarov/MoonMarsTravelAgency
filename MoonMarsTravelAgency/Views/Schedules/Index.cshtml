@@ -1,15 +1,26 @@
 ﻿@model IEnumerable<MoonMarsTravelAgency.Models.Schedule>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Availble flights";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    // var search = Session["LastSearch"];
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (Session["Admin"] != null)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@if (!Model.Any())
+{
+    <tr><div class="bg-danger h1">NO FLIGHT FOUND</div></tr>
+}
+else
+{
 <table class="table">
     <tr>
         <th>
@@ -36,7 +47,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
@@ -59,12 +71,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.To)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+        @if (Session["Admin"] != null)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        }
+        else
+        {
+    <td>@Html.ActionLink("Book", "Book", new { id = item.ID }, new {@class="btn btn-danger"})</td>
+        }
+
     </tr>
-}
+    }
+    
 
 </table>
+}
