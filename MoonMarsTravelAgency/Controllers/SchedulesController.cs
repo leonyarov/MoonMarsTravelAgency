@@ -29,7 +29,7 @@ namespace MoonMarsTravelAgency.Controllers
             var returnDate = form["Return"];
             var from = form["moon"];
             var to = form["mars"];
-            var pass = int.Parse(form["Passengers"]);
+            var pass = int.Parse(form["Passengers"] ?? "0");
 
             var ticketCount = db.Tickets.Sum(x => x.Seat_ID);
             var result = from x in search
@@ -37,7 +37,7 @@ namespace MoonMarsTravelAgency.Controllers
                          returnDate.Equals(x.ArrivalDate) &&
                          pass + ticketCount <= x.Seats
                          select x;
-                     ;
+                     
             return View("Index",result.ToList());
         }
 
@@ -59,6 +59,8 @@ namespace MoonMarsTravelAgency.Controllers
         // GET: Schedules/Create
         public ActionResult Create()
         {
+            ViewBag.mars = db.Mars;
+            ViewBag.moon = db.Moon;
             return View();
         }
 

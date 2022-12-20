@@ -20,6 +20,8 @@
                     @if (Session["Admin"] != null)
                     {
                         <li class="nav-item">@Html.ActionLink("Users", "Index", "Users", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Flight Schedules", "Index", "Schedules", null, new { @class = "nav-link" })</li>
+
                     }
                 </ul>
                 <form class="d-flex me-5" role="search">
@@ -30,6 +32,7 @@
                 @if (Session["ID"] != null)
                 {
                     <button class="nav-item bg-black">@Html.ActionLink(Session["Username"].ToString(), "Details", "Users", new { id = Session["ID"].ToString() }, new { @class = "nav-link" })</button>
+                    <button class="align-self-end btn btn-success me-2">@Html.ActionLink("Log out", "Logout", "Authentication", new { id = Session["ID"].ToString() }, new { @class = "nav-link" })</button>
 
 
                 }

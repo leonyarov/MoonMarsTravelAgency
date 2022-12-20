@@ -21,6 +21,14 @@ namespace MoonMarsTravelAgency.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session["Admin"] = null;
+            Session["ID"] = null;
+            Session["Username"] = null;
+            return new RedirectResult(Request.UrlReferrer.AbsoluteUri);
+        }
+
 
 
         [HttpPost]
