@@ -151,13 +151,17 @@ namespace MoonMarsTravelAgency.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Schedule schedule = db.Schedule.Find(id);
-
+            Session["From"]=schedule.From.ToString();
+            Session["To"]=schedule.To.ToString();
+            Session["Price"]=schedule.Price.ToString();
+            Session["Seats"]=schedule.Seats.ToString();
+            Session["sch"] = schedule;
             if (schedule == null)
             {
                 return HttpNotFound();
             }
 
-            return RedirectToAction("But", "Ticket", schedule);
+            return RedirectToAction("Buy", "Ticket", schedule);
         }
 
         protected override void Dispose(bool disposing)

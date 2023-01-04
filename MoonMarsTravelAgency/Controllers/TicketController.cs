@@ -90,22 +90,16 @@ namespace MoonMarsTravelAgency.Controllers
             }
         }
 
-        public ActionResult Payment(string txtCreditCard ,string txtCCV ,string txtID ,string txtAmount ,string chkRemember)
+        public ActionResult Payment([Bind(Include = "CreditCard,CCV,Name,ID,Amount")] Payment payment)
         {
-            Payment payment = new Payment()
-            {
-                CreditCard = txtCreditCard,
-                CCV = txtCCV,
-                ID = txtID,
-                Amount = txtAmount
-            };
-
-            if (chkRemember != null)
+            if (ModelState.IsValid)
             {
                 db.Payment.Add(payment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-
-            return View();
+                return View(payment);
         }
+
     }
 }
