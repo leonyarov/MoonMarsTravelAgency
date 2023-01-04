@@ -1,13 +1,17 @@
-﻿using System;
+﻿using MoonMarsTravelAgency.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Payment=MoonMarsTravelAgency.Models.Payment;
 
 namespace MoonMarsTravelAgency.Controllers
 {
+
     public class TicketController : Controller
     {
+        private MoonMarsContext db = new MoonMarsContext();
         // GET: Ticket
         public ActionResult Buy()
         {
@@ -84,6 +88,24 @@ namespace MoonMarsTravelAgency.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Payment(string txtCreditCard ,string txtCCV ,string txtID ,string txtAmount ,string chkRemember)
+        {
+            Payment payment = new Payment()
+            {
+                CreditCard = txtCreditCard,
+                CCV = txtCCV,
+                ID = txtID,
+                Amount = txtAmount
+            };
+
+            if (chkRemember != null)
+            {
+                db.Payment.Add(payment);
+            }
+
+            return View();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace MoonMarsTravelAgency.Controllers
             var pass = int.Parse(form["Passengers"] ?? "0");
 
             var ticketCount = db.Tickets.Count();
-
             //var result = from x in search
             //             where goDate.Equals(x.ScheduleDate) &&
             //             returnDate.Equals(x.ArrivalDate) &&
@@ -41,7 +40,10 @@ namespace MoonMarsTravelAgency.Controllers
 
             //TODO:use goDate and returnDate
             //TODO : understand why only Gever-ada is only visible( I added more lonia)
-            var MyResult = search.Where(x =>  x.From == from1 && x.To == to && x.Seats > pass && x.Seats > ticketCount).ToList();
+            
+            var MyResult = search.Where(x =>  x.From == from1 &&
+                                              x.To == to && x.Seats > pass &&
+                                              x.Seats > ticketCount).ToList();
             return View("Index", MyResult);
         }
 

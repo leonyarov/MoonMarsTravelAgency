@@ -1,0 +1,52 @@
+﻿@model MoonMarsTravelAgency.Models.Payment
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="Payment" method="post">
+    <table>
+        <tr>
+            <tb>Enter CreditCard : </tb>
+            <tb><input type="text" name="txtCreditCard" /></tb>
+        </tr>
+        <br />
+        <tr>
+            <tb>Enter CCV : </tb>
+            <tb><input type="text" name="txtCCV" /></tb>
+        </tr>
+        <br />
+
+        <tr>
+	        <tb>Enter Name : </tb>
+	        <tb><input type="text" name="txtName" /></tb>
+        </tr>
+        <br />
+
+
+        <tr>
+	        <tb>Enter ID : </tb>
+	        <tb><input type="text" name="txtID" /></tb>
+        </tr>
+        <br />
+
+
+        <tr>
+	        <tb>Enter Amount : </tb>
+	        <tb><input type="text" name="txtAmount" /></tb>
+        </tr>
+        <br />
+
+
+        <tr>
+	        <td>Remember card: </td>
+	        <td><input type="checkbox" name="chkRemember" /></td>
+        </tr>
+        <br />
+
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit Payment" /></td>
+        </tr>
+
+    </table>
+</form>
