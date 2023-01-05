@@ -20,10 +20,18 @@
             <div class="col">
                 <label for="moon">Origin</label>
                 <select name="moon" id="moon" class="form-control me-2">
-                    @foreach (var moon in ViewBag.moon)
-                    {
-                        <option value="@moon.Crater">@moon.Crater</option>
-                    }
+                    <optgroup class="bg-secondary fw-bold" label="Moon">
+                        @foreach (var moon in ViewBag.moon)
+                        {
+                            <option value="@moon.Crater">@moon.Crater</option>
+                        }
+                    </optgroup>
+                    <optgroup class="bg-warning fw-bold" label="Mars">
+                        @foreach (var mars in ViewBag.mars)
+                        {
+                            <option value="@mars.Crater">@mars.Crater</option>
+                        }
+                    </optgroup>
                 </select>
             </div>
 
@@ -31,15 +39,22 @@
 
                 <label for="mars">Destination</label>
                 <select name="mars" id="mars" class="form-control me-2">
-                    @foreach (var mars in ViewBag.mars)
-                    {
-                        <option value="@mars.Crater">@mars.Crater</option>
-                    }
+                    <optgroup class="bg-secondary fw-bold" label="Moon">
+                        @foreach (var moon in ViewBag.moon)
+                        {
+                            <option value="@moon.Crater">@moon.Crater</option>
+                        }
+                    </optgroup>
+                    <optgroup class="bg-warning fw-bold" label="Mars">
+                        @foreach (var mars in ViewBag.mars)
+                        {
+                            <option value="@mars.Crater">@mars.Crater</option>
+                        }
+                    </optgroup>
                 </select>
             </div>
 
             <div class="col">
-
                 @Html.Label("Departure")
                 @Html.TextBox("Departure", "", htmlAttributes: new { @class = "form-control me-2", type = "date" })
             </div>
@@ -48,15 +63,17 @@
                 @Html.Label("Return")
                 @Html.TextBox("Return", "", htmlAttributes: new { @class = "form-control me-2", type = "date" })
             </div>
-            <div class="col">
-                @Html.Label("Passengers")
-                @Html.TextBox("Passengers", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
-            </div>
-            <div class="col  mt-4">
+            @*<div class="col">
+            @Html.Label("Passengers")
+            @Html.TextBox("Passengers", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
+        </div>*@
+            <div class="col mt-4">
                 <button type="submit" class="btn btn-success">Search &raquo;</button>
             </div>
-
-        </div>
+            <div class="col mt-4">
+                <a href="Schedules/Index" class="btn btn-info">Search All &raquo;</a>
+            </div>
+        </div>  
     }
 
 </div>

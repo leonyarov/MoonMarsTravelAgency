@@ -29,7 +29,7 @@ namespace MoonMarsTravelAgency.Controllers
             var returnDate = form["Return"];
             var from1 = form["moon"];
             var to = form["mars"];
-            var pass = int.Parse(form["Passengers"] ?? "0");
+           // var pass = int.Parse(form["Passengers"] ?? "0");
 
             var ticketCount = db.Tickets.Count();
             //var result = from x in search
@@ -42,7 +42,7 @@ namespace MoonMarsTravelAgency.Controllers
             //TODO : understand why only Gever-ada is only visible( I added more lonia)
             
             var MyResult = search.Where(x =>  x.From == from1 &&
-                                              x.To == to && x.Seats > pass &&
+                                              x.To == to &&
                                               x.Seats > ticketCount).ToList();
             return View("Index", MyResult);
         }
@@ -150,12 +150,10 @@ namespace MoonMarsTravelAgency.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedule.Find(id);
-            Session["From"]=schedule.From.ToString();
-            Session["To"]=schedule.To.ToString();
-            Session["Price"]=schedule.Price.ToString();
-            Session["Seats"]=schedule.Seats.ToString();
-            Session["sch"] = schedule;
+
+            var schedule = db.Schedule.Find(id);
+            Session["Schedule"] = schedule;
+
             if (schedule == null)
             {
                 return HttpNotFound();

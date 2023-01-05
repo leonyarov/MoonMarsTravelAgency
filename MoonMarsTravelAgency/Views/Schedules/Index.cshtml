@@ -3,10 +3,11 @@
 @{
     ViewBag.Title = "Availble flights";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    // var search = Session["LastSearch"];
 }
 
+
 <h2>@ViewBag.Title</h2>
+
 
 @if (Session["Admin"] != null)
 {
@@ -15,78 +16,92 @@
     </p>
 }
 
+
 @if (!Model.Any())
 {
     <tr><div class="bg-danger h1">NO FLIGHT FOUND</div></tr>
 }
 else
 {
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduleID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduleDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArrivalDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Seats)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.From)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.To)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table" id="sortTable">
+        <thead>
+            <tr class="bg-gradient">
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.From)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.To)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ScheduleDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArrivalDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seats)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduleID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduleDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Seats)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.From)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.To)
-        </td>
-        @if (Session["Admin"] != null)
+        @foreach (var item in Model)
         {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        }
-        
-        {
-    <td>@Html.ActionLink("Book", "Book", new { id = item.ID }, new {@class="btn btn-danger"})</td>
+            <tr>
+                <td class="text-warning">
+                    @Html.DisplayFor(modelItem => item.Price)$
+                </td>
+                <td class="">
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td class="">
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduleDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seats)
+                </td>
+                @if (Session["Admin"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                }
+
+
+                <td>@Html.ActionLink("Book", "Book", new { id = item.ID }, new { @class = "btn btn-primary" })</td>
+
+
+            </tr>
         }
 
-    </tr>
-    }
-    
 
-</table>
+    </table>
+
+    <script src="~/Scripts/jquery-3.6.1.js"></script>
+    <script src="~/Scripts/datatables.min.js"></script>
+
+    <script>
+        $('#sortTable').DataTable(
+            {
+                columnDefs: [
+                    {
+                        target: 6,
+                        searchable: false
+                    }
+                ]
+            });
+        console.log("dasdas")
+    </script>
 }
+
