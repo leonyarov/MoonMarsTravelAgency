@@ -4,62 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<form action="Payment" method="post">
-        <table>
-            <tr>
-                <tb>Enter CreditCard : </tb>
-                <tb><input type="text" name="txtCreditCard" /></tb>
-            </tr>
-            <br />
-            <tr>
-                <tb>Enter CCV : </tb>
-                <tb><input type="text" name="txtCCV" /></tb>
-            </tr>
-            <br />
 
-            <tr>
-                <tb>Enter Name : </tb>
-                <tb><input type="text" name="txtName" /></tb>
-            </tr>
-            <br />
-
-
-            <tr>
-                <tb>Enter ID : </tb>
-                <tb><input type="text" name="txtID" /></tb>
-            </tr>
-            <br />
-
-
-            <tr>
-                <tb>Enter Amount : </tb>
-                <tb><input type="text" name="txtAmount" /></tb>
-            </tr>
-            <br />
-
-
-            <tr>
-                <td>Remember card: </td>
-                <td><input type="checkbox" name="chkRemember" /></td>
-            </tr>
-            <br />
-
-            <tr>
-                <td colspan="2"><input type="submit" value="Submit Payment" /></td>
-            </tr>
-
-        </table>
-    </form>*@
-
-
-
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Pay", "Payment", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Flights</h4>
+ 
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -95,11 +46,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-        </div>
+        @*@Html.LabelFor(model => Session["total"], htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => , "", new { @class = "text-danger" })
+            </div>*@
+        <h5 class="text-white col px-5 align-content-end pt-1" id="price">Total: @Session["total"]$ </h5>
+    </div>
+
+    <div>
+        <input type="checkbox" name="remember-card" id="remember-card" />
+        <label for="remember-card" class="text-white">Remember Card ?</label>
     </div>
 
     <div class="form-group">

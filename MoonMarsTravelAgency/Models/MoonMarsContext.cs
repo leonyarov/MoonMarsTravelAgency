@@ -74,9 +74,7 @@ namespace MoonMarsTravelAgency.Models
                 .Property(e => e.ID)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.Amount)
-                .IsFixedLength();
+
 
             modelBuilder.Entity<Users>()
                 .Property(e => e.Name)

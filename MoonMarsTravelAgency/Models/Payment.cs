@@ -29,9 +29,6 @@ namespace MoonMarsTravelAgency.Models
         [StringLength(10)]
         public string ID { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
-        [StringLength(10)]
-        public string Amount { get; set; }
+
     }
 }

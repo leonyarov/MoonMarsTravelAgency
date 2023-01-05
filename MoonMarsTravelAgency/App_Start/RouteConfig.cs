@@ -18,6 +18,13 @@ namespace MoonMarsTravelAgency
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+            //routes.MapRoute(
+            //name: "Payment",
+            //url: "{controller}/{action}/{card}/{op}",
+            //defaults: new { controller = "Home", action = "Index",card = UrlParameter.Optional ,op = UrlParameter.Optional }
+        
         }
     }
 }

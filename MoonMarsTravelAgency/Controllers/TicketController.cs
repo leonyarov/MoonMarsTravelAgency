@@ -16,6 +16,7 @@ namespace MoonMarsTravelAgency.Controllers
         public ActionResult Buy()
         {
             return View();
+
         }
 
         // GET: Ticket/Details/5
@@ -32,19 +33,16 @@ namespace MoonMarsTravelAgency.Controllers
 
         // POST: Ticket/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //public ActionResult Create([Bind(Include = "CreditCard,CCV,Name,ID,Amount")] Payment payment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Payment.Add(payment);
+        //        db.SaveChanges();
+        //        return RedirectToAction("CheckOut");
+        //    }
+        //    return View();
+        //}
 
         // GET: Ticket/Edit/5
         public ActionResult Edit(int id)
@@ -90,16 +88,13 @@ namespace MoonMarsTravelAgency.Controllers
             }
         }
 
-        public ActionResult Payment([Bind(Include = "CreditCard,CCV,Name,ID,Amount")] Payment payment)
+        public ActionResult Payment(FormCollection collection)
         {
-            if (ModelState.IsValid)
-            {
-                db.Payment.Add(payment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-                return View(payment);
+           
+            return View();
         }
+
+
 
     }
 }
