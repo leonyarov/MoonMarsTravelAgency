@@ -11,4 +11,13 @@
 //TODO:  
 
 
+//Test CID
+//
 
+//Test Secret
+//
+
+//Test card:
+//4032035456438068
+//Exp - any
+//cvc - any

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PayPal.Api;
+using Newtonsoft.Json;
+using Payment = MoonMarsTravelAgency.Models.Payment;
 
 namespace MoonMarsTravelAgency.Controllers
 {
@@ -13,14 +16,15 @@ namespace MoonMarsTravelAgency.Controllers
         private MoonMarsContext db = new MoonMarsContext();
 
         // GET: Payment
-        public ActionResult CheckOut(int? seats, bool? twoWay)
+        public ActionResult CheckOut(FormCollection collection)
         {
             var s = Session["Schedule"] as Schedule;
 
             if (s == null)
                 return RedirectToAction("Index", "Home");
-
-            var totalPrice = (seats ?? 1) * (twoWay == null || twoWay == false ? 1 : 2) * s.Price;
+            var seats = int.Parse(collection["seats"]);
+            var twoWay = collection["two-way"];
+            var totalPrice = seats * (twoWay == null ? 1 : 2) * s.Price;
 
             Session["total"] = totalPrice;
 
@@ -52,8 +56,13 @@ namespace MoonMarsTravelAgency.Controllers
             return View();
 
 
-            //Pay with credit card
 
+        }
+
+        public ActionResult Success(FormCollection payment)
+        {
+            
+            return RedirectToAction("Index","Home");
         }
 
 
