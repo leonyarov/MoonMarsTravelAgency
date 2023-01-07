@@ -65,7 +65,7 @@
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 console.log(data)
                 const transaction = orderData.purchase_units[0].payments.captures[0];
-                alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
                 @*const send = {
                     "id": orderData.purchase_units[0].payments.captures.id,
                     "status": orderData.purchase_units[0].payments.captures.status,
@@ -74,10 +74,16 @@
                 }*@
                 $.post({
                     url: '@Url.Action("Success","Payment")',
-                    data: JSON.stringify(orderData),
+                    data: { "id": orderData.id, "status": orderData.status, "email": orderData.payer.email_address},
                     success: function (result) {
-                        alert("Paypal sent data to controller")
+                        const element = document.getElementById('paypal-button-container');
+                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                        setTimeout(
+                            function () {
+                                actions.redirect("@Url.Action("Index","Home")");
+                            }, 3000);
                     },
+                    dataType: "json"
                 });
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 // const element = document.getElementById('paypal-button-container');
