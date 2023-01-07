@@ -9,38 +9,39 @@
 @using (Html.BeginForm("CheckOut", "Payment", FormMethod.Post, new { @class = "container mt-5 mb-5" }))
 {
     @*<form class="container mt-5 mb-5" action="Payment/CheckOut" method="post">*@
-    <div class="d-flex justify-content-center row">
-        <div class="col-md-8">
-            <div class="p-2">
-                <h4>Shopping cart</h4>
-            </div>
-            <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                <img src="https://img.itch.zone/aW1hZ2UvODIxMDAzLzUxOTc3NTYucG5n/347x500/kJi0vI.png" alt="Planet" width="10%" class="rounded-4" />
-                <div class="d-flex flex-column align-items-center">
-                    <span class="font-weight-bold text-black"> Flight Checkout</span>
-                    <div class="d-flex flex-column ">
-                        <div class="size mr-1"><span class="text-black">From:</span><span class="fw-bold text-black"> @s.From</span></div>
-                        <div class="color"><span class="text-black">To:</span><span class="fw-bold text-black"> @s.To</span></div>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <input type="number" max="@s.Seats" value="1" min="1" class="form-control text-black " name="seats" id="seats">
-                    <label for="seats" class="text-black h5 align-self-center mt-1">/@s.Seats</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="two-way" id="two-way" />
-                    <label for="two-way" class="text-black">Two-Way</label>
-                </div>
-
-            </div>
-            <div class="d-flex mt-3 p-2 bg-white rounded">
-                @*<button class="btn btn-warning" type="submit">Proceed to checkout</button>*@
-                <h5 class="text-black col px-5 align-content-end pt-1" id="price">Total: @s.Price$ </h5>
-
-            </div>
-            <div id="paypal-button-container" class="mt-2"></div>
+<div class="d-flex justify-content-center row">
+    <div class="col-md-8">
+        <div class="p-2">
+            <h4>Shopping cart</h4>
         </div>
+        <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+            <img src="https://img.itch.zone/aW1hZ2UvODIxMDAzLzUxOTc3NTYucG5n/347x500/kJi0vI.png" alt="Planet" width="10%" class="rounded-4" />
+            <div class="d-flex flex-column align-items-center">
+                <span class="font-weight-bold text-black"> Flight Checkout</span>
+                <div class="d-flex flex-column ">
+                    <div class="size mr-1"><span class="text-black">From:</span><span class="fw-bold text-black"> @s.From</span></div>
+                    <div class="color"><span class="text-black">To:</span><span class="fw-bold text-black"> @s.To</span></div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <input type="number" max="@s.Seats" value="1" min="1" class="form-control text-black " name="seats" id="seats">
+                <label for="seats" class="text-black h5 align-self-center mt-1">/@s.Seats</label>
+            </div>
+            <div>
+                <input type="checkbox" name="two-way" id="two-way" />
+                <label for="two-way" class="text-black">Two-Way</label>
+            </div>
+
+        </div>
+        <div class="d-flex mt-3 p-2 bg-white rounded">
+            @*<button class="btn btn-warning" type="submit">Proceed to checkout</button>*@
+            <h5 class="text-black col px-5 align-content-end pt-1" id="price">Total: @s.Price$ </h5>
+
+        </div>
+        <div id="paypal-button-container" class="mt-2"></div>
     </div>
+</div>
+
 }
 
 <script src="https://www.paypal.com/sdk/js?client-id=Ac0YJITFFVYhM6MKktXPoxratBCRGBmIliUUdFIgYUVQSuJFugdbMmKpjovai1QMqldGIn0c9Z_DjSUH&currency=USD"></script>
@@ -66,7 +67,7 @@
                 console.log(data)
                 const transaction = orderData.purchase_units[0].payments.captures[0];
                 alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-                @*const send = {
+                  @*const send = {
                     "id": orderData.purchase_units[0].payments.captures.id,
                     "status": orderData.purchase_units[0].payments.captures.status,
                     "amount": orderData.purchase_units[0].payments.captures.amount.value,
@@ -78,15 +79,28 @@
                     success: function (result) {
                         alert("Paypal sent data to controller")
                     },
+
                 });
+
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
                 // When ready to go live, remove the alert and show a success message within this page. For example:
                 // const element = document.getElementById('paypal-button-container');
                 // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                 // Or go to another URL:  actions.redirect('thank_you.html');
+              
             });
+
         }
+
     }).render('#paypal-button-container');
+
 </script>
+
+<div>
+    @Html.ActionLink("Back to Home-page", "Index","Home")
+</div>
 
 <script src="~/Scripts/jquery-3.6.1.js"></script>
 
@@ -99,5 +113,6 @@
         var checked = $("#two-way").is(":checked") ? 2 : 1;
         $("#price").text("Total: " + price * $("#seats").val() * checked + "$")
     }
+
 </script>
 
