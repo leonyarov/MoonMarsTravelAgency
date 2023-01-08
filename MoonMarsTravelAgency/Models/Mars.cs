@@ -12,13 +12,10 @@ namespace MoonMarsTravelAgency.Models
         [StringLength(50)]
         public string Crater { get; set; }
 
-        [StringLength(10)]
-        public string LocationX { get; set; }
+        public int LocationX { get; set; }
 
-        [StringLength(10)]
-        public string LocationY { get; set; }
+        public int LocationY { get; set; }
 
-        [StringLength(10)]
-        public string Radius { get; set; }
+        public int Radius { get; set; }
     }
 }

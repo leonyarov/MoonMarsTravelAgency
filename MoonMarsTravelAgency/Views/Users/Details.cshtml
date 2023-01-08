@@ -8,7 +8,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Users</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -44,6 +44,39 @@
         </dd>
 
     </dl>
+    <hr />
+    <h4>Tickets</h4>
+            @if (ViewBag.tickets == null)
+            {
+                <h4 class="bg-warning">NO TICKETS FOUND</h4>
+            }
+            else
+            {
+        <table class="table">
+        <thead>
+            <tr class="bg-gradient">
+                <th>
+                    Flight ID
+                </th>
+                <th>
+                    Seat ID
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (MoonMarsTravelAgency.Models.Tickets item in ViewBag.tickets)
+        {
+            <tr>
+                <td class="">
+                    @item.Flight_ID
+                </td>
+                <td class="">
+                    @item.Seat_ID
+                </td>
+            </tr>
+        }
+    </table>
+            }
 </div>
 @if (Session["Admin"] != null)
 {

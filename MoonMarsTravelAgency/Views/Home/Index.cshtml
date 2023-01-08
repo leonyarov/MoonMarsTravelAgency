@@ -10,7 +10,7 @@
         <h1 class="welcome"><span class="moon">Moon</span>-<span class="mars">Mars</span> Travel Agency</h1>
         <p class="s_welcome">Leon&amp;Dori Musk</p>
         <p class="blockquote-footer">Order flights now!</p>
-
+        <link href="~/Content/Site.css" rel="stylesheet" />
     </div>
 
     @using (Html.BeginForm("Search", "Schedules", FormMethod.Post))
@@ -64,18 +64,57 @@
                 @Html.TextBox("Return", "", htmlAttributes: new { @class = "form-control me-2", type = "date" })
             </div>
             @*<div class="col">
-            @Html.Label("Passengers")
-            @Html.TextBox("Passengers", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
-        </div>*@
+                    @Html.Label("Passengers")
+                    @Html.TextBox("Passengers", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
+                </div>*@
             <div class="col mt-4">
                 <button type="submit" class="btn btn-success">Search &raquo;</button>
             </div>
             <div class="col mt-4">
                 <a href="Schedules/Index" class="btn btn-info">Search All &raquo;</a>
             </div>
-        </div>  
+        </div>
     }
 
 </div>
+
+
+<div class="container-fluid">
+    maps
+    <div class="row ">
+        <div class="col map">
+
+            <img class="img-fluid" src="~/Content/Images/mars.jpg" alt="Alternate Text" />
+            @foreach (var mars in ViewBag.mars)
+            {
+            <span onclick="mars('@mars.Crater')" class="dot" data-bs-toggle="tooltip" data-bs-placement="top" title="@mars.Crater" style="top:@mars.LocationY%; left:@mars.LocationX%;"></span>
+            }
+
+        </div>
+        <div class="col map">
+            <img class="img-fluid" src="~/Content/Images/moon.jpg" alt="Alternate Text" />
+            @foreach (var moon in ViewBag.moon)
+            {
+                <span onclick="moon('@moon.Crater')" class="dot2" data-bs-toggle="tooltip" data-bs-placement="top" title="@moon.Crater" style="top:@moon.LocationY%; left:@moon.LocationX%;"></span>
+            }
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/bootstrap.bundle.js"></script>
+<script defer>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    function moon(name) {
+        $("#moon").val(name).change();
+    }
+    function mars(name) {
+        $("#mars").val(name).change();
+    }
+</script>
 
 

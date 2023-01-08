@@ -35,6 +35,7 @@ namespace MoonMarsTravelAgency.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.tickets = db.Tickets.Where(x=> x.User_ID == users.ID)?.ToList();
             return View(users);
         }
 

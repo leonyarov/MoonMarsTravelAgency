@@ -16,12 +16,14 @@ namespace MoonMarsTravelAgency.Models
       
         public virtual DbSet<Mars> Mars { get; set; }
         public virtual DbSet<Moon> Moon { get; set; }
-        public virtual DbSet<Payment> Payment { get; set; }
+        //public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Flights> Flights { get; set; }
 
         public virtual DbSet<Schedule> Schedule { get; set; }
+        public virtual DbSet<Transaction> Transaction { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -43,38 +45,17 @@ namespace MoonMarsTravelAgency.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Mars>()
-                .Property(e => e.LocationX)
-                .IsFixedLength();
+                .Property(e => e.LocationX);
 
             modelBuilder.Entity<Mars>()
-                .Property(e => e.LocationY)
-                .IsFixedLength();
+                .Property(e => e.LocationY);
 
             modelBuilder.Entity<Mars>()
-                .Property(e => e.Radius)
-                .IsFixedLength();
+                .Property(e => e.Radius);
 
             modelBuilder.Entity<Moon>()
                 .Property(e => e.Crater)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.CreditCard)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.CCV)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.Name)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.ID)
-                .IsFixedLength();
-
-
 
             modelBuilder.Entity<Users>()
                 .Property(e => e.Name)

@@ -24,8 +24,8 @@
                 </div>
             </div>
             <div class="d-flex">
-                <input type="number" max="@s.Seats" value="1" min="1" class="form-control text-black " name="seats" id="seats">
-                <label for="seats" class="text-black h5 align-self-center mt-1">/@s.Seats</label>
+                <input type="number" max="@ViewBag.max" value="1" min="1" class="form-control text-black " name="seats" id="seats">
+                <label for="seats" class="text-black h5 align-self-center mt-1">/@ViewBag.max</label>
             </div>
             <div>
                 <input type="checkbox" name="two-way" id="two-way" />
@@ -75,10 +75,9 @@
                 }*@
                 $.post({
                     url: '@Url.Action("Success","Payment")',
-                    data: { "id": orderData.id, "status": orderData.status, "email": orderData.payer.email_address},
+                    data: { "id": orderData.id, "status": orderData.status, "email": orderData.payer.email_address, "seats": $('#seats').val()},
                     success: function (result) {
-                        const element = document.getElementById('paypal-button-container');
-                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                        
                         setTimeout(
                             function () {
                                 actions.redirect("@Url.Action("Index","Home")");
@@ -96,6 +95,10 @@
                 // Or go to another URL:  actions.redirect('thank_you.html');
               
             });
+        },
+        onError: function (err) {
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '<h3>Failed to process payment!</h3>';
 
         }
 

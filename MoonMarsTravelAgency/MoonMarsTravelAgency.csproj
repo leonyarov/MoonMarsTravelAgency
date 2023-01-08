@@ -149,9 +149,9 @@
     <Compile Include="Models\Mars.cs" />
     <Compile Include="Models\Moon.cs" />
     <Compile Include="Models\MoonMarsContext.cs" />
-    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Tickets.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -176,6 +176,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\mars.jpg" />
+    <Content Include="Content\Images\moon.jpg" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Content\Images\1747390.jpg" />
     <Content Include="Content\Images\calliso.jpg" />
