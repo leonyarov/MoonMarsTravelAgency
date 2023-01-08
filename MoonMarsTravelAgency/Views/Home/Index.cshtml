@@ -68,10 +68,10 @@
                     @Html.TextBox("Passengers", "", htmlAttributes: new { @class = "form-control me-2", value = "1", type = "number" })
                 </div>*@
             <div class="col mt-4">
-                <button type="submit" class="btn btn-success">Search &raquo;</button>
+                <button type="submit" class="btn btn-outline-primary glowy">Search &raquo;</button>
             </div>
             <div class="col mt-4">
-                <a href="Schedules/Index" class="btn btn-info">Search All &raquo;</a>
+                <a href="Schedules/Index" class="btn btn-outline-info glowy">Search All &raquo;</a>
             </div>
         </div>
     }
@@ -80,14 +80,20 @@
 
 
 <div class="container-fluid">
-    maps
-    <div class="row ">
+    <div class="row">
+        <div class="col">
+            <h1 class="welcome">Mars:</h1>
+        </div>
+        <div class="col">
+            <h1 class="welcome">Moon:</h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col map">
-
             <img class="img-fluid" src="~/Content/Images/mars.jpg" alt="Alternate Text" />
             @foreach (var mars in ViewBag.mars)
             {
-            <span onclick="mars('@mars.Crater')" class="dot" data-bs-toggle="tooltip" data-bs-placement="top" title="@mars.Crater" style="top:@mars.LocationY%; left:@mars.LocationX%;"></span>
+                <span onclick="mars('@mars.Crater')" class="dot" data-bs-toggle="tooltip" data-bs-placement="top" title="@mars.Crater" style="top:@mars.LocationY%; left:@mars.LocationX%;"></span>
             }
 
         </div>
@@ -99,6 +105,11 @@
             }
         </div>
 
+    </div>
+    <div class="row my-1">
+        <div class="col">
+            <h6 class="welcome">Choose any point on the maps!</h6>
+        </div>
     </div>
 </div>
 

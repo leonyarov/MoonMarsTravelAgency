@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-sm fixed-top">
         <div class="container-fluid ">
             @Html.ActionLink("🚀", "Index", "Home", null,new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
 
         <!--Footer-->
         <footer>
-            <p>&copy; @DateTime.Now.Year Leon &amp; Dori</p>
+            <p><a onclick="party()" class="party">&copy;</a> @DateTime.Now.Year Leon &amp; Dori</p>
         </footer>
     </div>
 
@@ -60,4 +60,22 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
+<script>
+    var state = false;
+    function party() {
+        if (!state) {
+            $("body").css({
+                "animation": "fun 1s infinite"
+            })
+            state = true;
+        }
+        else {
+            $("body").css({
+                "animation": ""
+            })
+            state = false;
+        }
+    }
+</script>
 </html>

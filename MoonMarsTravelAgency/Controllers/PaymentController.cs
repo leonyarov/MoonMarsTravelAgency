@@ -41,32 +41,6 @@ namespace MoonMarsTravelAgency.Controllers
             return View("CheckOut");
         }
    
-        //public ActionResult Pay( FormCollection collection)
-        //{
-        //    var payment = new Payment()
-        //    {
-        //        CreditCard = collection["CreditCard"],
-        //        CCV = collection["CCV"],
-        //        Name = collection["Name"],
-        //        ID = collection["ID"]
-        //    };
-        //    var RemCard = collection["remember-card"] !=null;
-
-        //    if (RemCard && ModelState.IsValid)
-        //    {
-        //            db.Payment.Add(payment);
-        //            db.SaveChanges();
-        //            return RedirectToAction("Index", "Home");//TODO : redirect to confirm page
-                
-        //    }
-        //    else
-        //        return RedirectToAction("Index", "Home");
-
-        //    return View();
-
-
-
-        //}
 
         public ActionResult Success(FormCollection payment)
         {
