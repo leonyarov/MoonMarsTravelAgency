@@ -25,15 +25,17 @@ namespace MoonMarsTravelAgency.Controllers
         public ActionResult Search(FormCollection form)
         {
             var search = db.Schedule.ToList();
-            var goDate = form["Departure"];
-            var returnDate = form["Return"];
+            var goDate = DateTime.Parse(form["Departure"]);
+            var returnDate = DateTime.Parse(form["Return"]);
             var from1 = form["moon"];
             var to = form["mars"];
            // var pass = int.Parse(form["Passengers"] ?? "0");
 
        
             var MyResult = search.Where(x =>  x.From == from1 &&
-                                              x.To == to).ToList();
+                                              x.To == to &&
+                                              x.ArrivalDate < returnDate &&
+                                              x.ScheduleDate > goDate).ToList();
            
 
             return View("Index", MyResult);

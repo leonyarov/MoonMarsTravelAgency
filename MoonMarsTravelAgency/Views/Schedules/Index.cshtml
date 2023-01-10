@@ -45,7 +45,11 @@ else
                     @Html.DisplayNameFor(model => model.Seats)
                 </th>
                 <th></th>
-                <th></th>
+                @if (Session["Admin"] != null)
+                {
+                    <th></th>
+                }
+
 
             </tr>
         </thead>
