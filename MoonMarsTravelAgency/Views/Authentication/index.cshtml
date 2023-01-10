@@ -28,11 +28,11 @@
                     <h2 class="alert-warning">Wrong ID or Password</h2>
                 }
             <div class="form-floating">
-                @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" })
+                @Html.TextBox("loginID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" , required = "required" })
                 <label for="loginID">ID</label>
             </div>
             <div class="form-floating">
-                @Html.Password("loginPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password" , type="password"})
+                @Html.Password("loginPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password" , type="password", required = "required"})
                 <label for="loginPassword">Password</label>
             </div>
 
@@ -54,26 +54,26 @@
             <h1 class="h3 mb-3 fw-normal fw-bold"> Register </h1>
 
             <div class="form-floating">
-                @Html.TextBox("registerID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" })
+                @Html.TextBox("registerID", "", htmlAttributes: new { @class = "form-control", placeholder = "ID", type = "number" , required = "required" })
                 <label for="registerID">ID</label>
             </div>
 
             <div class="form-floating">
-                @Html.TextBox("registerUsername", "", htmlAttributes: new { @class = "form-control", placeholder = "Username", type = "text" })
+                @Html.TextBox("registerUsername", "", htmlAttributes: new { @class = "form-control", placeholder = "Username", type = "text", required = "required" })
                 <label for="regiterUsername">Username</label>
             </div>
 
             <div class="form-floating">
-                @Html.TextBox("registerName", "", htmlAttributes: new { @class = "form-control", placeholder = "Name", type = "text" })
+                @Html.TextBox("registerName", "", htmlAttributes: new { @class = "form-control", placeholder = "Name", type = "text", required = "required" })
                 <label for="registerName">Name</label>
             </div>
             <div class="form-floating">
-                @Html.TextBox("registerfName", "", htmlAttributes: new { @class = "form-control", placeholder = "Last Name", type = "text" })
+                @Html.TextBox("registerfName", "", htmlAttributes: new { @class = "form-control", placeholder = "Last Name", type = "text", required = "required" })
                 <label for="registerfName">Last Name</label>
             </div>
 
             <div class="form-floating">
-                @Html.Password("registerPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password", type = "password" })
+                @Html.Password("registerPassword", "", htmlAttributes: new { @class = "form-control", placeholder = "Password", type = "password", required = "required" })
                 <label for="loginPassword">Password</label>
             </div>
 
