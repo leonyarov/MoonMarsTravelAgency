@@ -13,3 +13,4 @@ SCE.
 
 > **Make sure you see the database in the `Server Explorer` window**. The project utilizes a local database so the data can be views locally from any pc.
 
+![image](https://user-images.githubusercontent.com/31301575/211649804-fc317397-5cb2-4ce1-b9a1-e04f2908a08f.png)
